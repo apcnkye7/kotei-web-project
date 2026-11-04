@@ -1,0 +1,31 @@
+<settings>
+<servers>
+  <server>
+    <id>kotei-kotei-devops-cicd</id>
+    <username>aws</username>
+    <password>${env.CODEARTIFACT_AUTH_TOKEN}</password>
+  </server>
+</servers>
+<profiles>
+  <profile>
+    <id>kotei-kotei-devops-cicd</id>
+    <activation>
+      <activeByDefault>true</activeByDefault>
+    </activation>
+    <repositories>
+      <repository>
+        <id>kotei-kotei-devops-cicd</id>
+        <url>https://kotei-145250404307.d.codeartifact.us-east-1.amazonaws.com/maven/kotei-devops-cicd/</url>
+      </repository>
+    </repositories>
+  </profile>
+</profiles>
+<mirrors>
+  <mirror>
+    <id>kotei-kotei-devops-cicd</id>
+    <name>kotei-kotei-devops-cicd</name>
+    <url>https://kotei-145250404307.d.codeartifact.us-east-1.amazonaws.com/maven/kotei-devops-cicd/</url>
+    <mirrorOf>*</mirrorOf>
+  </mirror>
+</mirrors>
+</settings>
