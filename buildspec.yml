@@ -1,4 +1,3 @@
-
 version: 0.2
 
 phases:
@@ -8,25 +7,25 @@ phases:
 
   pre_build:
     commands:
-      - echo Logging in to AWS CodeArtifact...
-      - CODEARTIFACT_AUTH_TOKEN=`aws codeartifact get-authorization-token`
-      - export CODEARTIFACT_AUTH_TOKEN
+      - echo "Logging in to AWS CodeArtifact..."
+      - export CODEARTIFACT_AUTH_TOKEN=$(aws codeartifact get-authorization-token --domain kotei --domain-owner 145250404307 --region us-east-1 --query authorizationToken --output text)
+      - echo "CodeArtifact authentication completed."
 
   build:
     commands:
       - echo "====== BEGINNING TEST PHASE ======"
-      - echo "Running tests on `date`"
+      - echo "Running tests on $(date)"
       - chmod +x run-tests.sh
       - ./run-tests.sh
       - echo "====== TEST PHASE COMPLETE ======"
       - echo "====== BEGINNING BUILD PHASE ======"
-      - echo "Build started on `date`"
+      - echo "Build started on $(date)"
       - mvn -s settings.xml compile
       - echo "====== BUILD PHASE COMPLETE ======"
 
   post_build:
     commands:
-      - echo "Build completed on `date`"
+      - echo "Build completed on $(date)"
       - mvn -s settings.xml package
 
 artifacts:
