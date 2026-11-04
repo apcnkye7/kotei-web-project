@@ -1,14 +1,17 @@
+
 version: 0.2
 
 phases:
   install:
     runtime-versions:
       java: corretto8
+
   pre_build:
     commands:
       - echo Logging in to AWS CodeArtifact...
-      - CODEARTIFACT_AUTH_TOKEN=`aws codeartifact get-authorization-token --domain kotei --domain-owner 145250404307 --region us-east-2 --query authorizationToken --output text`
+      - CODEARTIFACT_AUTH_TOKEN=`aws codeartifact get-authorization-token`
       - export CODEARTIFACT_AUTH_TOKEN
+
   build:
     commands:
       - echo "====== BEGINNING TEST PHASE ======"
@@ -20,12 +23,14 @@ phases:
       - echo "Build started on `date`"
       - mvn -s settings.xml compile
       - echo "====== BUILD PHASE COMPLETE ======"
+
   post_build:
     commands:
-      - echo Build completed on `date`
-      - echo Packaging artifacts...
-      - mvn package -s settings.xml
+      - echo "Build completed on `date`"
+      - mvn -s settings.xml package
+
 artifacts:
   files:
-    - target/*.war
+    - target/nextwork-web-project.war
   discard-paths: no
+
