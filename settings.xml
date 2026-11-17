@@ -15,7 +15,7 @@
     <repositories>
       <repository>
         <id>kotei-kotei-devops-cicd</id>
-        <url>https://kotei-145250404307.d.codeartifact.us-east-1.amazonaws.com/maven/kotei-devops-cicd/</url>
+        <url>https://kotei-145250404307.d.codeartifact.us-east-2.amazonaws.com/maven/kotei-devops-cicd/</url>
       </repository>
     </repositories>
   </profile>
@@ -24,7 +24,7 @@
   <mirror>
     <id>kotei-kotei-devops-cicd</id>
     <name>kotei-kotei-devops-cicd</name>
-    <url>https://kotei-145250404307.d.codeartifact.us-east-1.amazonaws.com/maven/kotei-devops-cicd/</url>
+    <url>https://kotei-145250404307.d.codeartifact.us-east-2.amazonaws.com/maven/kotei-devops-cicd/</url>
     <mirrorOf>*</mirrorOf>
   </mirror>
 </mirrors>
